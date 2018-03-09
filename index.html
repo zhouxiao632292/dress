@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    #banner{
+        position: relative;
+        width:1116px;
+        height: 400px;
+        background: dodgerblue;
+        margin:200px auto;
+    }
+    #banner ul li{
+        position: absolute;
+        left:0;
+        top:0;
+    }
+    .line{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 16px;
+        height:260px;
+        /*line-height: 400px;*/
+        padding: 140px 12px 0;
+        background: rgba(0,0,0,0.6);
+        border-left: 1px solid #fff;
+        color: #fff;
+    }
+
+</style>
+<body>
+<div id="banner">
+    <ul>
+        <li>
+            <img src="img/1.jpg" alt="" width="956" height="400"/>
+            <div class="line">爱新鲜</div>
+        </li>
+        <li>
+            <img src="img/2.jpg" alt="" width="956" height="400"/>
+            <div class="line">一衣多穿</div>
+        </li>
+        <li>
+            <img src="img/3.jpg" alt="" width="956" height="400"/>
+            <div class="line">评测擂台</div>
+        </li>
+        <li>
+            <img src="img/4.jpg" alt="" width="956" height="400"/>
+            <div class="line">达人心情</div>
+        </li>
+        <li>
+            <img src="img/5.jpg" alt="" width="956" height="400"/>
+            <div class="line">大咖卖场</div>
+        </li>
+
+    </ul>
+</div>
+</body>
+<script src="js/jquery-1.11.2.js"></script>
+<script>
+    let arr = [];
+    $("li").each(function(i){
+        let index = $(this).index();
+        arr[i] = index * 41;
+        $(this).css("left",index*40 + "px")
+    })
+
+    $(".line").on("click",function(){
+        let index=$(this).parents().index();
+        console.log(index)
+        $(".line").each(function(i){
+            console.log(i)
+            console.log(arr)
+            if(i <= index){
+               $(this).parents("li").animate({"left":arr[i] + "px"})
+            }else{
+                $(this).parents("li").animate({"left":arr[i]+ 915 + "px"})
+            }
+        })
+
+    })
+</script>
+</html>
